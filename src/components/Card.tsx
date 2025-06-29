@@ -25,12 +25,7 @@ const Card: FC<IProps> = ({ index, card }) => {
     setEnlargement(false)
     setMenuVisible(true)
   }
-/*
-  const toggleMenu = (e: MouseEvent): void => {
-    e.preventDefault()
-    setMenuVisible(menuVisible => !menuVisible)
-  }
-*/
+  
   const setCardColor = (color: CardColor) => setColor(card, color)
   const resetColor = () => setCardColor('')
 
