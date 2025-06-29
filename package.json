@@ -23,7 +23,6 @@
     "typescript": "^4.1.3"
   },
   "scripts": {
-    "preinstall": "ln -fs $(pwd)/pre-commit .git/hooks/",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
