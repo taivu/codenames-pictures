@@ -12,15 +12,16 @@ const Rules: FC = () =>
             czechgames
       </a>
     </p>
+    <h2>Labubu says "I see you"</h2>
     <div style={{ display: 'flex', justifyContent: 'space-between' }}>
       <img
-        src="/images/docs/IMG_5383.jpeg"
-        alt="Blue"
+        src="/images/docs/IMG_5384.jpeg"
+        alt="red"
         style={{ maxWidth: '45%' }}
       />
       <img
         src="/images/docs/IMG_5383.jpeg"
-        alt="Red"
+        alt="blue"
         style={{ maxWidth: '45%' }}
       />
     </div>
