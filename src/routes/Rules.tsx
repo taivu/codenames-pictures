@@ -12,7 +12,7 @@ const Rules: FC = () =>
             czechgames
       </a>
     </p>
-    <h2>Labubu says "I see you"</h2>
+    <h2>Labubu says &quot;I see you &quot;</h2>
     <div style={{ display: 'flex', justifyContent: 'space-between' }}>
       <img
         src="/images/docs/IMG_5384.jpeg"
