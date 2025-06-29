@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // const randomise = (arr: any[]): any[] => arr.sort(() => 0.5 - Math.random())
 
-const randomise = <T>(arr: T[]): T[] => {
+const randomise = (arr: any[]): any[] => {
   const result = [...arr]
   for (let i = result.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1))
