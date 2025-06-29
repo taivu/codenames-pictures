@@ -26,7 +26,7 @@ const Card: FC<IProps> = ({ index, card }) => {
     setMenuVisible(true)
   }
 
-  const toggleMenu = (e: any): void => {
+  const toggleMenu = (e: MouseEvent): void => {
     e.preventDefault()
     setMenuVisible(!menuVisible)
   }
