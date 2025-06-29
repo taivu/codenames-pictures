@@ -26,6 +26,11 @@ const Card: FC<IProps> = ({ index, card }) => {
     setMenuVisible(true)
   }
 
+  const toggleMenu = (e: any): void => {
+    e.preventDefault()
+    setMenuVisible(!menuVisible)
+  }
+
   const setCardColor = (color: CardColor) => setColor(card, color)
   const resetColor = () => setCardColor('')
 
@@ -41,7 +46,7 @@ const Card: FC<IProps> = ({ index, card }) => {
       onDoubleClick={resetColor}
     >
       <Badge classname="card-id">{index}</Badge>
-      <button onClick={() => setEnlargement(!enlarged)} className="no-style">
+      <button onClick={() => toggleMenu} className="no-style">
         <img
           src={`/codenames-pictures/images/cards/card-${cardId}.jpg`}
           className={classNames('card-img', { 'enlarged': enlarged })}
