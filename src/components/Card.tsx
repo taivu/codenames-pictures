@@ -1,4 +1,4 @@
-import React, { useContext, useState, useRef, FC, MouseEvent } from 'react'
+import React, { useContext, useState, useRef, FC, MouseEvent, TouchEvent } from 'react'
 import classNames from 'classnames'
 import CardContextMenu from 'components/CardContextMenu'
 import useOutsideClickListener from 'hooks/useOutsideClickListener'
@@ -20,7 +20,7 @@ const Card: FC<IProps> = ({ index, card }) => {
   const container = useRef<HTMLDivElement>(null)
   useOutsideClickListener(container, () => setEnlargement(false))
 
-  const showMenu = (e: MouseEvent): void => {
+  const showMenu = (e: MouseEvent|TouchEvent): void => {
     e.preventDefault()
     setEnlargement(false)
     setMenuVisible(true)
@@ -46,7 +46,7 @@ const Card: FC<IProps> = ({ index, card }) => {
       onDoubleClick={resetColor}
     >
       <Badge classname="card-id">{index}</Badge>
-      <button onClick={() => showMenu} className="no-style">
+      <button onTouchStart={() => showMenu} onClick={() => showMenu} className="no-style">
         <img
           src={`/images/cards/card-${cardId}.jpg`}
           className={classNames('card-img', { 'enlarged': enlarged })}
