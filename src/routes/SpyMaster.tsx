@@ -23,7 +23,7 @@ const SpyMaster: FC<RouteChildrenProps<IParams>> = ({ match, history }) => {
   })
 
   const fetchCards = async() => {
-    const response = await fetch('/codenames-pictures/spy-master-cards.json')
+    const response = await fetch('/spy-master-cards.json')
     cards.current = await response.json()
     setCardToDisplay()
   }
