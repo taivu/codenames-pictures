@@ -12,19 +12,6 @@ const Rules: FC = () =>
             czechgames
       </a>
     </p>
-    <h2>Labubu says &quot;I see you &quot;</h2>
-    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-      <img
-        src="/images/docs/IMG_5384.jpeg"
-        alt="red"
-        style={{ maxWidth: '45%' }}
-      />
-      <img
-        src="/images/docs/IMG_5383.jpeg"
-        alt="blue"
-        style={{ maxWidth: '45%' }}
-      />
-    </div>
     <h3>Intro</h3>
     <p>
           What are these strange symbols on the map? They code for locations where spies must contact secret agents!
