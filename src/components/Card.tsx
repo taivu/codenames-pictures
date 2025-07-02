@@ -43,7 +43,7 @@ const Card: FC<IProps> = ({ index, card }) => {
       <Badge classname="card-id">{index}</Badge>
       <button onClick={() => setEnlargement(!enlarged)} className="no-style">
         <img
-          src={`/codenames-pictures/images/cards/card-${cardId}.jpg`}
+          src={`/images/cards/card-${cardId}.jpg`}
           className={classNames('card-img', { 'enlarged': enlarged })}
           alt={`codename card-${cardId}`}
         />

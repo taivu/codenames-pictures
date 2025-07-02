@@ -1,8 +1,8 @@
-@import "./../style/colors";
+@use "../style/colors";
 
 .ScoreBoard {
   position: absolute;
-  background: $background;
+  background: colors.$background;
   z-index: 5;
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;

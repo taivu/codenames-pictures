@@ -80,13 +80,13 @@ const Rules: FC = () =>
     </blockquote>
     <p>
       <img
-        src="/codenames-pictures/images/cards/card-29.jpg"
+        src="/images/cards/card-29.jpg"
         width="150px"
         alt="card-example doughnut"
         style={{ display: 'inline-block' }}
       />
       <img
-        src="/codenames-pictures/images/cards/card-4.jpg"
+        src="/images/cards/card-4.jpg"
         width="150px"
         alt="card-example witch"
         style={{ display: 'inline-block', marginLeft: '1rem' }}

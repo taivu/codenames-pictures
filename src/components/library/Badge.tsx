@@ -4,6 +4,7 @@ import 'components/library/Badge.scss'
 
 interface IProps {
   classname?: string
+  children?: any
 }
 
 const Badge: FC<IProps> = ({ classname, children }) =>

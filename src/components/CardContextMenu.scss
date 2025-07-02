@@ -1,7 +1,7 @@
-@import "./../style/colors";
+@use "../style/colors";
 
 @mixin option-color-hover {
-  @each $name, $hex in $cardColors {
+  @each $name, $hex in colors.$cardColors {
     &.#{$name}:hover {
       background-color: rgba($hex, 0.7);
     }

@@ -1,8 +1,9 @@
-@import "./../style/colors";
+@use "sass:color";
+@use "../style/colors";
 
 @mixin team-gradient {
-  @each $name, $hex in $spyCardCellColors {
-    $lightened: lighten($hex, 15%);
+  @each $name, $hex in colors.$spyCardCellColors {
+    $lightened: color.adjust($hex, $lightness: 15%);
     &.#{$name} {
       background: $hex;
       background: radial-gradient(circle, $lightened 0%, $hex 100%);

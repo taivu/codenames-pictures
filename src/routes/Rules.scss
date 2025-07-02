@@ -1,9 +1,9 @@
-@import "./../style/colors";
+@use "../style/colors";
 
 .Rules {
   max-width: 80vw;
   margin: 2rem auto;
-  border: 2px dashed $primaryGrey;
+  border: 2px dashed colors.$primaryGrey;
   padding: 2rem;
   border-radius: 12px;
 

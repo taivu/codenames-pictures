@@ -1,3 +1,5 @@
+@use "colors";
+
 @import url("https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&display=swap");
 
 body {
@@ -10,11 +12,11 @@ body {
 
 a {
   text-decoration: none;
-  color: $primaryBlue;
+  color: colors.$primaryBlue;
 }
 
 @mixin color-modifiers {
-  @each $name, $hex in $teamColors {
+  @each $name, $hex in colors.$teamColors {
     &-#{$name} {
       color: $hex;
     }

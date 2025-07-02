@@ -1,8 +1,8 @@
-@import "./../style/colors";
+@use "../style/colors";
 
 $buttonColors: (
-  "blue": $primaryBlue,
-  "green": $primaryGreen,
+  "blue": colors.$primaryBlue,
+  "green": colors.$primaryGreen,
 );
 
 @mixin colored-buttons {
@@ -36,8 +36,8 @@ $buttonColors: (
   @include colored-buttons();
 
   &:hover {
-    background-color: rgba($primaryGreen, 0.8);
-    border-color: $primaryGreen;
+    background-color: rgba(colors.$primaryGreen, 0.8);
+    border-color: colors.$primaryGreen;
     color: white;
   }
 }
@@ -54,7 +54,7 @@ button.link {
 }
 
 button.link {
-  color: $primaryBlue;
+  color: colors.$primaryBlue;
   padding-left: 0.2rem;
 }
 
