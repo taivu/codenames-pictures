@@ -31,11 +31,12 @@ const TeamSetup: FC<IProps> = ({ color }) => {
 
   return (
     <div className={'TeamSetup'}>
-      <h3 className={classNames('team-title', `text-${color}`)}>
+      <h3 className={classNames('team-title', `text-${color}`)}
+        onClick={() => setStartingTeam(color)}
+      >
           Team {color}
         <button
           className={classNames('starting-team', color, { 'active': currentStaringTeam })}
-          onClick={() => setStartingTeam(color)}
         />
       </h3>
       <form onSubmit={addNewPlayer}>

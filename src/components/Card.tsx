@@ -41,7 +41,7 @@ const Card: FC<IProps> = ({ index, card }) => {
       onDoubleClick={resetColor}
     >
       <Badge classname="card-id">{index}</Badge>
-      <button onClick={() => setEnlargement(!enlarged)} className="no-style">
+      <button onClick={showMenu} className="no-style">
         <img
           src={`/images/cards/card-${cardId}.jpg`}
           className={classNames('card-img', { 'enlarged': enlarged })}

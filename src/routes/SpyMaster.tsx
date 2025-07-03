@@ -1,26 +1,18 @@
-import React, { useState, useRef, useEffect, FC, FormEvent } from 'react'
-import { RouteChildrenProps } from 'react-router-dom'
+import { useState, useRef, useEffect, FC, FormEvent } from 'react'
 import SpyCard from 'components/SpyCard'
 import { ISpyCard } from 'interfaces/SpyMaster'
 import 'routes/SpyMaster.scss'
+import { getRandomInt } from 'utils/number-helpers'
 
-interface IParams {
-  spyCardId: string
-}
-
-const SpyMaster: FC<RouteChildrenProps<IParams>> = ({ match, history }) => {
+const SpyMaster: FC = () => {
   const [searchCardId, setSearchCardId] = useState<string>('')
   const [card, setCard] = useState<ISpyCard>()
-  const cardIdToDisplay = match?.params.spyCardId
+  const [cardIdToDisplay, setCardIdToDisplay] = useState(0)
   const cards = useRef([])
 
   useEffect(() => {
     fetchCards()
   }, [])
-
-  useEffect(() => {
-    setCardToDisplay()
-  })
 
   const fetchCards = async() => {
     const response = await fetch('/spy-master-cards.json')
@@ -28,16 +20,19 @@ const SpyMaster: FC<RouteChildrenProps<IParams>> = ({ match, history }) => {
     setCardToDisplay()
   }
 
-  const setCardToDisplay = (spyCardId = match?.params.spyCardId) => {
-    const card = cards.current.find(({ id }) => id === spyCardId)
+  const setCardToDisplay = (cardId?: number) => {
+    let spyCardId = cardId ?? getRandomInt(100)
+    const card = cards.current.find(({ id }) => Number(id) === spyCardId)
+    setCardIdToDisplay(spyCardId)
     setCard(card)
   }
 
-  const changeCard = (e: FormEvent) => {
+  const changeCard = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    setSearchCardId('')
-    history.push(searchCardId)
-    setCardToDisplay()
+    const form = e.currentTarget
+    const input = form.elements.namedItem('card-id') as HTMLInputElement
+    const cardId = Number(input.value)
+    setCardToDisplay(cardId)
   }
 
   return (
@@ -51,6 +46,7 @@ const SpyMaster: FC<RouteChildrenProps<IParams>> = ({ match, history }) => {
             value={searchCardId}
             onChange={({ target: { value } }) => setSearchCardId(value)}
             placeholder="Insert card id"
+            name="card-id"
           />
           <button className="btn blue">Search</button>
         </form>

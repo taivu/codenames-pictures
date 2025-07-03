@@ -1,5 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-const randomise = (arr: any[]): any[] => arr.sort(() => 0.5 - Math.random())
+
+const randomise = (arr: any[]): any[] => {
+  const result = [...arr]
+  for (let i = result.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1))
+    ;[result[i], result[j]] = [result[j], result[i]]
+  }
+  return result
+}
 
 const chunkify = (array: any[], chunkAmount: number): Array<Array<any>> => {
   if (chunkAmount < 2)

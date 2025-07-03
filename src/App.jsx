@@ -12,7 +12,7 @@ function App() {
         <Route path="/" element={<Rules />} />
         <Route path="/play" element={<Game teamColors={['red', 'blue']} cardsAmount={20}/>} />
         <Route path="/playDuet" element={<Game teamColors={['green']} cardsAmount={25}/>} />
-        <Route path="/spy-master/:spyCardId" element={<SpyMaster />} />
+        <Route path="/spy-master" element={<SpyMaster />} />
       </Routes>
     </HashRouter>
   )

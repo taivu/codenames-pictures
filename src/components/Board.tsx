@@ -30,7 +30,7 @@ const Board: FC = () => {
               <Link to="#" onClick={toggleTeamsModal}>
                   Teams
               </Link>
-              <Link target="_blank" to={`/spy-master/${getRandomInt(101)}`}>
+              <Link target="_blank" to={`/spy-master`}>
                   Spy Master
               </Link>
               <Link to="#" onClick={newGame}>

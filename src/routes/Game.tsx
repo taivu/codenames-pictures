@@ -41,7 +41,15 @@ const Game: FC<IProps> = ({ teamColors, cardsAmount }) => {
 
   const newGame = (e: { preventDefault: () => void }) => {
     e.preventDefault()
-    setCards(randomiseCards(cardsAmount))
+
+    const previousGameCardIds = cards.map(({ cardId }) => cardId)
+
+    const newCards = randomise([...Array(280)]
+      .filter((_, i) => ! previousGameCardIds.includes(i))
+      .map((_, i) => ({ cardId: i, color: '' })))
+      .slice(0, cardsAmount)
+    
+    setCards(newCards)
     setStartingTeam(undefined)
   }
 
