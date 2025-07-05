@@ -1,0 +1,7 @@
+node_modules
+dist
+public/
+.git
+**/.git
+package-lock.json
+composer.lock

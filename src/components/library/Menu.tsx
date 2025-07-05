@@ -15,24 +15,23 @@ const Menu: FC<IProps> = ({ children }) => {
   useOutsideClickListener(container, onOutsideClick)
 
   return (
-    <button
-      className={classNames('Menu', { 'expanded': expanded })}
-      onClick={toggleExpand}
-      ref={container}
-    >
-      {expanded && <div className="menu-content">
-        {children.map((option: JSX.Element, index: number) =>
-          <div
-            className="menu-item"
-            key={index}
-            onClick={toggleExpand}
-            onKeyPress={toggleExpand}
-            role="button"
-            tabIndex={index}
-          >
-            {option}
-          </div>)}
-      </div>}
+    <button className={classNames('Menu', { expanded: expanded })} onClick={toggleExpand} ref={container}>
+      {expanded && (
+        <div className="menu-content">
+          {children.map((option: JSX.Element, index: number) => (
+            <div
+              className="menu-item"
+              key={index}
+              onClick={toggleExpand}
+              onKeyPress={toggleExpand}
+              role="button"
+              tabIndex={index}
+            >
+              {option}
+            </div>
+          ))}
+        </div>
+      )}
       <div className="menu-trigger">Menu</div>
     </button>
   )

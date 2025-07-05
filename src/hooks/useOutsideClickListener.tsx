@@ -1,6 +1,6 @@
 import { RefObject, useEffect } from 'react'
 
-const useOutsideClickListener: (ref: RefObject<HTMLElement|null>, action: () => void) => void = (ref, action) => {
+const useOutsideClickListener: (ref: RefObject<HTMLElement | null>, action: () => void) => void = (ref, action) => {
   const onClick = (e: MouseEvent) => {
     if (!!ref && ref.current && !ref.current.contains(e.target as HTMLDivElement)) {
       action()

@@ -7,9 +7,8 @@ interface IProps {
   children?: any
 }
 
-const Badge: FC<IProps> = ({ classname, children }) =>
-  <span className={classNames('Badge', classname)}>
-    {children}
-  </span>
+const Badge: FC<IProps> = ({ classname, children }) => (
+  <span className={classNames('Badge', classname)}>{children}</span>
+)
 
 export default Badge

@@ -14,7 +14,9 @@ const TeamScore: FC<IProps> = ({ color }) => {
   return (
     <div className={'TeamScore'}>
       <h1 className={classNames('score', `text-${color}`)}>{score[color]}</h1>
-      <button className="btn" onClick={() => scorePlayer(color)}>Score</button>
+      <button className="btn" onClick={() => scorePlayer(color)}>
+        Score
+      </button>
     </div>
   )
 }

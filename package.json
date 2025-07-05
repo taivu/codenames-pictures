@@ -33,7 +33,9 @@
     "preview": "vite preview",
     "test": "vitest",
     "predeploy": "yarn run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "prettier:run": "prettier -w './**/*.tsx'",
+    "prettier:check": "prettier -c './**/*.tsx'"
   },
   "browserslist": {
     "production": [
@@ -52,6 +54,7 @@
     "@typescript-eslint/parser": "^8.35.1",
     "eslint": "^9.30.1",
     "eslint-plugin-react": "^7.37.5",
+    "prettier": "^3.6.2",
     "vitest": "^3.2.4"
   }
 }

@@ -22,13 +22,11 @@ const CardContextMenu: FC<IProps> = ({ hideMenu, setColor }) => {
 
   return (
     <div className="CardContextMenu" ref={container}>
-      {cardColors.map((color: ICardColor) => <button
-        key={color.id}
-        className={classNames('menu-action', color.id)}
-        onClick={() => setCardColor(color.id)}
-      >
-        {color.display}
-      </button>)}
+      {cardColors.map((color: ICardColor) => (
+        <button key={color.id} className={classNames('menu-action', color.id)} onClick={() => setCardColor(color.id)}>
+          {color.display}
+        </button>
+      ))}
     </div>
   )
 }

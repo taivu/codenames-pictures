@@ -14,7 +14,7 @@ const SpyMaster: FC = () => {
     fetchCards()
   }, [])
 
-  const fetchCards = async() => {
+  const fetchCards = async () => {
     const response = await fetch('/spy-master-cards.json')
     cards.current = await response.json()
     setCardToDisplay()
@@ -52,14 +52,27 @@ const SpyMaster: FC = () => {
         </form>
       </div>
 
-      <div className="container spy-master">
-        {card && <><h1 className="title">Spy master card: {cardIdToDisplay}</h1>
-          <SpyCard card={card}/>
-        </>}
+      <div className="random-card-wrapper">
+        <button className="btn blue" onClick={() => setCardToDisplay()}>
+          Random Spy Master Card
+        </button>
+      </div>
 
-        {cards.current.length && !card &&
-          <h1 className="title">Spy master card &quot;{cardIdToDisplay}&quot;<br/>does not exist you twat.</h1>
-        }
+      <div className="container spy-master">
+        {card && (
+          <>
+            <h1 className="title">Spy master card: {cardIdToDisplay}</h1>
+            <SpyCard card={card} />
+          </>
+        )}
+
+        {cards.current.length && !card && (
+          <h1 className="title">
+            Spy master card &quot;{cardIdToDisplay}&quot;
+            <br />
+            does not exist you twat.
+          </h1>
+        )}
       </div>
     </div>
   )
