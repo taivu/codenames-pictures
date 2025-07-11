@@ -27,7 +27,6 @@
     "vite-tsconfig-paths": "^5.1.4"
   },
   "scripts": {
-    "postinstall": "[[ $CI != 'true' && -d .git ]] && ln -fs $(pwd)/pre-commit .git/hooks/",
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
