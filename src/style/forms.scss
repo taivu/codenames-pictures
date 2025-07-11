@@ -1,6 +1,8 @@
+@use "colors";
+
 input {
   padding: 0.5rem 1rem;
-  border: 2px dashed $primaryGrey;
+  border: 2px dashed colors.$primaryGrey;
   border-radius: 4px;
   font-size: 1rem;
   font-family: inherit;

@@ -1,3 +1,4 @@
+@use "sass:map";
 $background: #f9e5a9;
 $primaryGrey: gainsboro;
 $primaryBlue: rgb(0, 149, 255);
@@ -11,7 +12,7 @@ $teamColors: (
   "green": $primaryGreen,
 );
 
-$cardColors: map-merge(
+$cardColors: map.merge(
   $teamColors,
   (
     "neutral": $primaryYellow,
@@ -19,7 +20,7 @@ $cardColors: map-merge(
   )
 );
 
-$spyCardCellColors: map-merge(
+$spyCardCellColors: map.merge(
   $teamColors,
   (
     "black": #292929,

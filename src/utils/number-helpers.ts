@@ -1,5 +1,5 @@
 const getRandomInt = function(max: number): number {
-  return Math.floor(Math.random() * Math.floor(max))
+  return Math.ceil(Math.random() * Math.floor(max))
 }
 
 export {

@@ -5,9 +5,8 @@ import { capitalizeFirstLetter } from 'utils/string-helpers'
 import { randomise, chunkify } from 'utils/array-helpers'
 import { CardColor, Players, TeamColor, ICard, ICardColor, IScores, ITeams } from 'interfaces/Game'
 
-const randomiseCards = (amount: number) => randomise(
-  [...Array(280)].map((_, i) => ({ cardId: i, color: '' }))
-).slice(0, amount)
+const randomiseCards = (amount: number) =>
+  randomise([...Array(280)].map((_, i) => ({ cardId: i, color: '' }))).slice(0, amount)
 
 interface IProps {
   teamColors: Array<TeamColor>
@@ -20,17 +19,17 @@ const Game: FC<IProps> = ({ teamColors, cardsAmount }) => {
     { id: 'neutral', display: 'Neutral' },
     { id: 'black', display: 'Game Over' },
   ]
-  teamColors.forEach(color => cardColors.unshift({ id: color, display: capitalizeFirstLetter(color) }))
+  teamColors.forEach((color) => cardColors.unshift({ id: color, display: capitalizeFirstLetter(color) }))
 
   const getTeamObject = (value: string[]) => {
     const obj: ITeams = {}
-    teamColors.forEach(color => obj[color] = value)
+    teamColors.forEach((color) => (obj[color] = value))
     return obj
   }
 
-  const getScoresObject = (value: | number) => {
+  const getScoresObject = (value: number) => {
     const obj: IScores = {}
-    teamColors.forEach(color => obj[color] = value)
+    teamColors.forEach((color) => (obj[color] = value))
     return obj
   }
 
@@ -38,16 +37,31 @@ const Game: FC<IProps> = ({ teamColors, cardsAmount }) => {
   const [startingTeam, setStartingTeam] = useState<TeamColor | undefined>()
   const [teams, setTeams] = useState<ITeams>(getTeamObject([]))
   const [score, setScore] = useState<IScores>(getScoresObject(0))
+  const [usedCardIds, setUsedCardIds] = useState<any[]>([])
 
   const newGame = (e: { preventDefault: () => void }) => {
     e.preventDefault()
-    setCards(randomiseCards(cardsAmount))
+
+    if (usedCardIds.length >= 280) {
+      setUsedCardIds([])
+    }
+
+    const prevGameCardIds = cards.filter((c) => !usedCardIds.includes(c)).map(({ cardId }) => cardId)
+
+    setUsedCardIds((used) => [...used, ...prevGameCardIds])
+
+    const remainingCardIds = [...Array(280).keys()].filter((i) =>
+      usedCardIds.length < 280 ? !usedCardIds.includes(i) : true,
+    )
+    const newCards = randomise(remainingCardIds.map((cardId) => ({ cardId, color: '' }))).slice(0, cardsAmount)
+
+    setCards(newCards)
     setStartingTeam(undefined)
   }
 
   const setColor = (card: ICard, color: CardColor) => {
     const newCards = [...cards]
-    newCards.forEach(c => {
+    newCards.forEach((c) => {
       if (card === c) c.color = color
     })
     setCards(newCards)
@@ -78,48 +92,51 @@ const Game: FC<IProps> = ({ teamColors, cardsAmount }) => {
     const allPlayers = teamColors.reduce((players: Players, color: TeamColor) => [...players, ...teams[color]], [])
     const chunkedPlayers = chunkify(randomise(allPlayers), teamColors.length)
     const newTeams: ITeams = {}
-    teamColors.forEach((color: TeamColor, index: number) => newTeams[color] = chunkedPlayers[index] || [])
+    teamColors.forEach((color: TeamColor, index: number) => (newTeams[color] = chunkedPlayers[index] || []))
     setTeams(newTeams)
     resetScores()
   }
 
   const pickSpyMasters = () => {
     const newTeams: ITeams = {}
-    teamColors.forEach(color => {
+    teamColors.forEach((color) => {
       newTeams[color] = randomise(teams[color])
     })
     setTeams(newTeams)
   }
 
-  const scorePlayer = (color: TeamColor) => setScore({
-    ...score,
-    [color]: (score[color] + 1),
-  })
+  const scorePlayer = (color: TeamColor) =>
+    setScore({
+      ...score,
+      [color]: score[color] + 1,
+    })
 
   const resetScores = () => setScore(getScoresObject(0))
-  const getGuessedCardsAmount = (color: TeamColor) => cards.filter(card => card.color === color).length
+  const getGuessedCardsAmount = (color: TeamColor) => cards.filter((card) => card.color === color).length
 
   return (
-    <GameContext.Provider value={{
-      cards,
-      teams,
-      startingTeam,
-      setStartingTeam,
-      score,
-      newGame,
-      setColor,
-      addPlayer,
-      updatePlayer,
-      removePlayer,
-      shuffleTeams,
-      pickSpyMasters,
-      scorePlayer,
-      getGuessedCardsAmount,
-      cardColors,
-      teamColors,
-      isDuetGame,
-    }}>
-      <Board/>
+    <GameContext.Provider
+      value={{
+        cards,
+        teams,
+        startingTeam,
+        setStartingTeam,
+        score,
+        newGame,
+        setColor,
+        addPlayer,
+        updatePlayer,
+        removePlayer,
+        shuffleTeams,
+        pickSpyMasters,
+        scorePlayer,
+        getGuessedCardsAmount,
+        cardColors,
+        teamColors,
+        isDuetGame,
+      }}
+    >
+      <Board />
     </GameContext.Provider>
   )
 }

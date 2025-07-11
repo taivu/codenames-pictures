@@ -17,27 +17,29 @@ const Board: FC = () => {
 
   return (
     <>
-      <ScoreBoard/>
-      {showTeamsModal && <TeamsModal onCloseModal={toggleTeamsModal}/>}
+      <ScoreBoard />
+      {showTeamsModal && <TeamsModal onCloseModal={toggleTeamsModal} />}
       <div className="container">
         <div className="inner-container">
-          <CardGrid/>
+          <CardGrid />
           <div className="side-wrapper">
             <div className="teams-summary">
-              {teamColors.map((color: TeamColor) => <TeamSummary key={color} color={color}/>)}
+              {teamColors.map((color: TeamColor) => (
+                <TeamSummary key={color} color={color} />
+              ))}
             </div>
             <Menu>
               <Link to="#" onClick={toggleTeamsModal}>
-                  Teams
+                Teams
               </Link>
-              <Link target="_blank" to={`/spy-master/${getRandomInt(101)}`}>
-                  Spy Master
+              <Link target="_blank" to={`/spy-master`}>
+                Spy Master
               </Link>
               <Link to="#" onClick={newGame}>
-                  New Game
+                New Game
               </Link>
               <Link target="_blank" to="/">
-                  Rules
+                Rules
               </Link>
             </Menu>
           </div>

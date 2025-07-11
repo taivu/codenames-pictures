@@ -19,7 +19,8 @@
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
-    "target": "es5"
+    "target": "ESNext",
+    "types": ["vite/client", "react", "react-dom"]
   },
   "include": [
     "src"

@@ -33,26 +33,23 @@ const Card: FC<IProps> = ({ index, card }) => {
     <div
       onContextMenu={showMenu}
       className={classNames('Card', {
-        'selected': !!color,
+        selected: !!color,
         [color]: !!color,
-        'duet': isDuetGame,
+        duet: isDuetGame,
       })}
       ref={container}
       onDoubleClick={resetColor}
     >
       <Badge classname="card-id">{index}</Badge>
-      <button onClick={() => setEnlargement(!enlarged)} className="no-style">
+      <button onClick={showMenu} className="no-style">
         <img
-          src={`/codenames-pictures/images/cards/card-${cardId}.jpg`}
-          className={classNames('card-img', { 'enlarged': enlarged })}
+          src={`/images/cards/card-${cardId}.jpg`}
+          className={classNames('card-img', { enlarged: enlarged })}
           alt={`codename card-${cardId}`}
         />
       </button>
 
-      {menuVisible && <CardContextMenu
-        hideMenu={() => setMenuVisible(false)}
-        setColor={setCardColor}
-      />}
+      {menuVisible && <CardContextMenu hideMenu={() => setMenuVisible(false)} setColor={setCardColor} />}
     </div>
   )
 }

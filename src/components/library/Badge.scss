@@ -1,10 +1,10 @@
-@import "./../../style/colors";
+@use "../../style/colors";
 
 .Badge {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: $background;
+  background: colors.$background;
   color: #000;
   font-size: 1rem;
   font-weight: bold;

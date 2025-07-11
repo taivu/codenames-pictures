@@ -8,17 +8,21 @@ interface IProps {
 }
 
 const SpyCard: FC<IProps> = ({ card }) => {
-  const StartingColor = () => <div className={classNames('starting-color', card.startingColor)}/>
+  const StartingColor = () => <div className={classNames('starting-color', card.startingColor)} />
 
-  return <div className="SpyCard">
-    <StartingColor/>
-    <div className="spy-grid">
-      {card.cells.map((cell: ISpyCardCell, index: number) => (
-        <div className={`cell ${cell.color}`} key={index}/>
-      ))}
+  return (
+    <div className="SpyCard">
+      <StartingColor />
+      <div className="spy-grid">
+        {card.cells.map((cell: ISpyCardCell, index: number) => (
+          <div className={`cell ${cell.color}`} key={index}>
+            {index + 1}
+          </div>
+        ))}
+      </div>
+      <StartingColor />
     </div>
-    <StartingColor/>
-  </div>
+  )
 }
 
 export default SpyCard

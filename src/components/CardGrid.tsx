@@ -10,11 +10,7 @@ const CardGrid: FC = () => {
   return (
     <div className="CardGrid">
       {cards.map((card: ICard, index: number) => (
-        <Card
-          key={card.cardId}
-          card={card}
-          index={index + 1}
-        />
+        <Card key={card.cardId} card={card} index={index + 1} />
       ))}
     </div>
   )
