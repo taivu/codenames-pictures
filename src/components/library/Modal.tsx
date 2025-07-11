@@ -6,6 +6,7 @@ interface IProps {
   title?: string
   classname?: string
   onCloseModal?: () => void
+  children: any
 }
 
 const Modal: FC<IProps> = ({ onCloseModal, title, classname, children }) => {

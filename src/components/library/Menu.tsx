@@ -4,7 +4,7 @@ import useOutsideClickListener from 'hooks/useOutsideClickListener'
 import 'components/library/Menu.scss'
 
 interface IProps {
-  children: JSX.Element[]
+  children: any
 }
 
 const Menu: FC<IProps> = ({ children }) => {
@@ -18,7 +18,7 @@ const Menu: FC<IProps> = ({ children }) => {
     <button className={classNames('Menu', { expanded: expanded })} onClick={toggleExpand} ref={container}>
       {expanded && (
         <div className="menu-content">
-          {children.map((option: JSX.Element, index: number) => (
+          {children.map((option: any, index: number) => (
             <div
               className="menu-item"
               key={index}
